@@ -33,28 +33,28 @@
       <!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
+        <a class="nav-link collapsed" href="{{ route("categorias") }}">
           <i class="bi bi-card-list"></i>
           <span>Categorias</span>
         </a>
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
+        <a class="nav-link collapsed" href="{{ route("productos") }}">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Productos</span>
         </a>
       </li><!-- End Login Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
+        <a class="nav-link collapsed" href="{{ route("clientes") }}">
           <i class="bi bi-dash-circle"></i>
           <span>Clientes</span>
         </a>
       </li><!-- End Error 404 Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
+        <a class="nav-link collapsed" href="{{ route("usuarios") }}">
           <i class="bi bi-file-earmark"></i>
           <span>Usuarios</span>
         </a>

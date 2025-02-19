@@ -11,7 +11,7 @@ class Clientes extends Controller
      */
     public function index()
     {
-        //
+        return view('modules.clientes.index');
     }
 
     /**
