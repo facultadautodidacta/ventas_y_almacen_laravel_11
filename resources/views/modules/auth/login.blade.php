@@ -25,31 +25,36 @@
                     <h5 class="card-title text-center pb-0 fs-4">Login de usuarios</h5>
                     <p class="text-center small">Ingresa tu email y password para acceder</p>
                   </div>
-
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('logear') }}">
+                    @csrf
                     <div class="col-12">
                       <label for="email" class="form-label">Email</label>
                       <div class="input-group has-validation">
-                        
                         <input type="text" name="email" class="form-control" id="email" required>
                         <div class="invalid-feedback">Escribe tu correo</div>
                       </div>
                     </div>
-
                     <div class="col-12">
                       <label for="password" class="form-label">Password</label>
                       <input type="password" name="password" class="form-control" id="password" required>
                       <div class="invalid-feedback">Escribe tu contraseña!</div>
                     </div>
-
-                    
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
-                    
                   </form>
-
+                  <!--Validacion que viene de logear-->
+                  <div>
+                    @if ($errors->any())
+                      <p>
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                          @endforeach
+                        </ul>
+                      </p>
+                    @endif
+                  </div>
                 </div>
               </div>
 

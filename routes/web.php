@@ -10,7 +10,12 @@ use App\Http\Controllers\Usuarios;
 use App\Http\Controllers\Ventas;
 use Illuminate\Support\Facades\Route;
 
+//crear un usuario admin, solo usar una vez
+Route::get('/crear-admin', [AuthController::class, 'crearAdmin']);
+
 Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::post('/logear', [AuthController::class, 'logear'])->name('logear');
+
 Route::get('/home', [Dashboard::class, 'index'])->name('home');
 
 Route::prefix('ventas')->group(function(){
