@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>@yield('titulo')</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -29,6 +29,8 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('NiceAdmin/assets/css/style.css') }}" rel="stylesheet">
 
+  <!--Iconos con fontawesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -48,7 +50,7 @@
   @include('shared.aside')
   <!-- End Sidebar-->
 
-  
+  @yield('contenido')
 
   <!-- ======= Footer ======= -->
   @include('shared.footer')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class Categorias extends Controller
@@ -11,7 +12,9 @@ class Categorias extends Controller
      */
     public function index()
     {
-        return view('modules.categorias.index');
+        $titulo = 'Administrar Categorias';
+        $items = Categoria::all();
+        return view('modules.categorias.index', compact('titulo', 'items'));
     }
 
     /**
