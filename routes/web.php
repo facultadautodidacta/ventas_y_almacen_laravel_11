@@ -32,6 +32,8 @@ Route::prefix('detalle')->middleware('auth')->group(function(){
 
 Route::prefix('categorias')->middleware('auth')->group(function(){
     Route::get('/', [Categorias::class, 'index'])->name('categorias');
+    Route::get('/create', [Categorias::class, 'create'])->name('categorias.create');
+    Route::post('/store', [Categorias::class, 'store'])->name('categorias.store');
 });
 
 Route::prefix('productos')->middleware('auth')->group(function(){

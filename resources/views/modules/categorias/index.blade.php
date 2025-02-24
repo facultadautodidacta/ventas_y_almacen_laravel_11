@@ -18,9 +18,9 @@
               Admnistrar las categorias de nuestros productos.
             </p>
             <!-- Table with stripped rows -->
-            <button class="btn btn-primary">
+            <a href="{{ route("categorias.create") }}" class="btn btn-primary">
               <i class="fa-solid fa-circle-plus"></i> Agregar nueva categoria
-            </button>
+            </a>
             <hr>
             <table class="table datatable">
               <thead>
