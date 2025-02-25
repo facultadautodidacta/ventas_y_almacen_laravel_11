@@ -39,7 +39,7 @@
                       <a href="" class="btn btn-warning">
                         <i class="fa-solid fa-pen-to-square"></i>
                       </a>
-                      <a href="" class="btn btn-danger">
+                      <a href="{{ route("categorias.show", $item->id) }}" class="btn btn-danger">
                         <i class="fa-solid fa-trash-can"></i>
                       </a>
                     </td>
