@@ -18,7 +18,7 @@
               Admnistrar las cuentas y roles de usuarios.
             </p>
             <!-- Table with stripped rows -->
-            <a href="" class="btn btn-primary">
+            <a href="{{ route("usuarios.create") }}" class="btn btn-primary">
               <i class="fa-solid fa-user-plus"></i> Agregar nuevo usuario
             </a>
             <hr>
