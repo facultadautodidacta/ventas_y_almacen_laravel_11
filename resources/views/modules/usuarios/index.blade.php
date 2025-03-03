@@ -31,7 +31,7 @@
                   <th class="text-center">Cambio password</th>
                   <th class="text-center">Activo</th>
                   <th class="text-center">
-                    Acciones
+                    Editar
                   </th>
                 </tr>
               </thead>
@@ -46,20 +46,24 @@
                         <i class="fa-solid fa-user-lock"></i>
                       </a>
                     </td>
-                    <td>
+                    <td class="text-center">
                       @if ($item->activo)
-                      <span class="badge bg-success">Activo</span>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                       
+                      </div>
                       @else
-                      <span class="badge bg-warning text-dark">Inactivo</span>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        
+                      </div>
                       @endif
                     </td>
                     <td>
-                      <a href="#" class="btn btn-warning">
+                      <a href="{{ route("usuarios.edit", $item->id) }}" class="btn btn-warning">
                         <i class="fa-solid fa-user-pen"></i>
                       </a>
-                      <a href="#" class="btn btn-danger">
-                        <i class="fa-solid fa-user-gear"></i>
-                      </a>
+                     
                     </td>
                   </tr>
                   @endforeach

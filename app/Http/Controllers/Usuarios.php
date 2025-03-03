@@ -56,7 +56,9 @@ class Usuarios extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = User::find($id);
+        $titulo = "Editar usuario";
+        return view('modules.usuarios.edit', compact('item', 'titulo'));
     }
 
     /**
@@ -64,7 +66,12 @@ class Usuarios extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = User::find($id);
+        $item->name = $request->name;
+        $item->email = $request->email;
+        $item->rol = $request->rol;
+        $item->save();
+        return to_route('usuarios');
     }
 
     /**
