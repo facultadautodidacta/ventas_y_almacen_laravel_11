@@ -35,38 +35,8 @@
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                 @foreach ($items as $item)
-                  <tr class="text-center">
-                    <td>{{ $item->email }}</td>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->rol }}</td>
-                    <td>
-                      <a href="" class="btn btn-secondary">
-                        <i class="fa-solid fa-user-lock"></i>
-                      </a>
-                    </td>
-                    <td class="text-center">
-                      @if ($item->activo)
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                       
-                      </div>
-                      @else
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                        
-                      </div>
-                      @endif
-                    </td>
-                    <td>
-                      <a href="{{ route("usuarios.edit", $item->id) }}" class="btn btn-warning">
-                        <i class="fa-solid fa-user-pen"></i>
-                      </a>
-                     
-                    </td>
-                  </tr>
-                  @endforeach
+              <tbody id="tbody-usuarios">
+                 @include('modules.usuarios.tbody')
               </tbody>
             </table>
             <!-- End Table with stripped rows -->
@@ -78,4 +48,27 @@
 
 </main>
 @endsection
+
+@push('scripts')
+    <script>
+
+      function recargar_tbody(){
+        $.ajax({
+          type : "GET",
+          url : "{{ route('usuarios.tbody') }}",
+          success : function(respuesta){
+            console.log(respuesta);
+          } 
+        });
+      }
+
+      $(document).ready(function(){
+        $('.form-check-input').on("change", function(){
+          let id = $(this).attr("id");
+          let estado = $(this).is(":checked") ? 1 : 0;
+          console.log(id + "||" +  estado);
+        });
+      });
+    </script>
+@endpush
 

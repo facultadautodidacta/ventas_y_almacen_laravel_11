@@ -81,4 +81,9 @@ class Usuarios extends Controller
     {
         //
     }
+
+    public function tbody(){
+        $items = User::all();
+        return view('modules.usuarios.tbody', compact('items'));
+    }
 }

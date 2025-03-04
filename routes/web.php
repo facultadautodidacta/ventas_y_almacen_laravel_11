@@ -54,4 +54,5 @@ Route::prefix('usuarios')->middleware('auth')->group(function(){
     Route::post('/store', [Usuarios::class, 'store'])->name('usuarios.store');
     Route::get('/edit/{id}', [Usuarios::class, 'edit'])->name('usuarios.edit');
     Route::put('/update/{id}', [Usuarios::class, 'update'])->name('usuarios.update');
+    Route::get('/tbody', [Usuarios::class, 'tbody'])->name('usuarios.tbody');
 });
