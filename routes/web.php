@@ -55,4 +55,5 @@ Route::prefix('usuarios')->middleware('auth')->group(function(){
     Route::get('/edit/{id}', [Usuarios::class, 'edit'])->name('usuarios.edit');
     Route::put('/update/{id}', [Usuarios::class, 'update'])->name('usuarios.update');
     Route::get('/tbody', [Usuarios::class, 'tbody'])->name('usuarios.tbody');
+    Route::get('/cambiar-estado/{id}/{estado}', [Usuarios::class, 'estado'])->name('usuarios.estado');
 });

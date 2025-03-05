@@ -62,11 +62,24 @@
         });
       }
 
+      function cambiar_estado(id, estado) {
+        $.ajax({
+          type: "GET",
+          url : "usuarios/cambiar-estado/" + id + "/" + estado,
+          success: function(respuesta){
+            if(respuesta == 1){
+              alert("Cambio de estado correcto");
+              recargar_tbody();
+            }
+          }
+        });
+      }
+
       $(document).ready(function(){
         $('.form-check-input').on("change", function(){
           let id = $(this).attr("id");
           let estado = $(this).is(":checked") ? 1 : 0;
-          console.log(id + "||" +  estado);
+          cambiar_estado(id, estado);
         });
       });
     </script>

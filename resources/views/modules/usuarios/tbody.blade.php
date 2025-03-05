@@ -10,8 +10,8 @@
     </td>
     <td class="text-center">
         <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="activo{{ $item->id }}" 
-        {{ $item->activo ? 'checked' : '' }} >
+            <input class="form-check-input" type="checkbox" id="{{ $item->id }}" 
+            {{ $item->activo ? 'checked' : '' }} >
         </div>
     </td>
     <td>
