@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Clientes extends Controller
+class Proveedores extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('modules.clientes.index');
+        $titulo = 'Proveedores';
+        return view('modules.proveedores.index', compact('titulo'));
     }
 
     /**

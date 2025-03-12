@@ -72,6 +72,27 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('NiceAdmin/assets/js/main.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    @if(session('success'))
+      Swal.fire({
+        title: 'Exito!',
+        text: '{{session('success')}}',
+        icon: 'success',
+        confirmButtonText:'Aceptar'
+      });
+    @endif
+
+    @if(session('error'))
+      Swal.fire({
+        title: 'Exito!',
+        text: '{{session('success')}}',
+        icon: 'error',
+        confirmButtonText:'Aceptar'
+      });
+    @endif
+  </script>
+
   @stack('scripts')
 </body>
 

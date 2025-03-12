@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Exception;
 use Illuminate\Support\Facades\Hash;
 
 class Usuarios extends Controller
@@ -32,15 +33,20 @@ class Usuarios extends Controller
      */
     public function store(Request $request)
     {
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'activo' => true,
-            'rol' => $request->rol
-        ]);
-
-        return to_route('usuarios');
+        try {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'activo' => true,
+                'rol' => $request->rol
+            ]);
+    
+            return to_route('usuarios')->with('success', 'Usuario guardado con exito!');
+            
+        } catch (Exception $e) {
+            return to_route('usuarios')->with('error', 'Error al guardar usuario!' . $e->getMessage());
+        }
     }
 
     /**
@@ -66,12 +72,16 @@ class Usuarios extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = User::find($id);
-        $item->name = $request->name;
-        $item->email = $request->email;
-        $item->rol = $request->rol;
-        $item->save();
-        return to_route('usuarios');
+        try {
+            $item = User::find($id);
+            $item->name = $request->name;
+            $item->email = $request->email;
+            $item->rol = $request->rol;
+            $item->save();
+            return to_route('usuarios')->with('success', 'Usuario actualizado con exito!');
+        }  catch (Exception $e) {
+            return to_route('usuarios')->with('error', 'Error al actualizar usuario!' . $e->getMessage());
+        }
     }
 
     /**
