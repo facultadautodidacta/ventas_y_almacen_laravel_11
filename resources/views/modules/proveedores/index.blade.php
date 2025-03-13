@@ -37,14 +37,14 @@
                 </tr>
               </thead>
               <tbody>
-                  
+                  @foreach ($items as $item)
                   <tr class="text-center">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $item->nombre }}</td>
+                    <td>{{ $item->telefono }}</td>
+                    <td>{{ $item->email }}</td>
+                    <td>{{ $item->cp }}</td>
+                    <td>{{ $item->sitio_web }}</td>
+                    <td>{{ $item->notas }}</td>
                     <td>
                       <a href="#" class="btn btn-warning">
                         <i class="fa-solid fa-pen-to-square"></i>
@@ -54,7 +54,7 @@
                       </a>
                     </td>
                   </tr>
-                  
+                  @endforeach
               </tbody>
             </table>
             <!-- End Table with stripped rows -->
