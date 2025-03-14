@@ -47,6 +47,8 @@ Route::prefix('productos')->middleware('auth')->group(function(){
 
 Route::prefix('proveedores')->middleware('auth')->group(function(){
     Route::get('/', [Proveedores::class, 'index'])->name('proveedores');
+    Route::get('/create', [Proveedores::class, 'create'])->name('proveedores.create');
+    Route::post('/store', [Proveedores::class, 'store'])->name('proveedores.store');
 });
 
 Route::prefix('usuarios')->middleware('auth')->group(function(){

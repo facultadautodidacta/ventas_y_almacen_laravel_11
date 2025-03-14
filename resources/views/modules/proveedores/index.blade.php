@@ -18,7 +18,7 @@
               Admnistrar los proveedores de nuestros productos.
             </p>
             <!-- Table with stripped rows -->
-            <a href="#" class="btn btn-primary">
+            <a href="{{ route('proveedores.create') }}" class="btn btn-primary">
               <i class="fa-solid fa-circle-plus"></i> Agregar nuevo proveedor
             </a>
             <hr>

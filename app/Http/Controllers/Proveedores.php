@@ -22,7 +22,8 @@ class Proveedores extends Controller
      */
     public function create()
     {
-        //
+        $titulo = 'Agregar proveedor';
+        return view('modules.proveedores.create', compact('titulo'));
     }
 
     /**
@@ -30,7 +31,19 @@ class Proveedores extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $item = new Proveedor();
+            $item->nombre = $request->nombre;
+            $item->telefono = $request->telefono;
+            $item->email = $request->email;
+            $item->cp = $request->cp;
+            $item->sitio_web = $request->sitio_web;
+            $item->notas = $request->notas;
+            $item->save();
+            return to_route('proveedores')->with("success", "Proveedor agregado con exito!!!");
+        } catch (\Throwable $th) {
+            return to_route('proveedores')->with("error", "Fallo al agregar proveedor!!!" . $th->getMessage());
+        }
     }
 
     /**
