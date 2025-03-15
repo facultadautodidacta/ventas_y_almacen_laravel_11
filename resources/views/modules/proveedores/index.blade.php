@@ -46,7 +46,7 @@
                     <td>{{ $item->sitio_web }}</td>
                     <td>{{ $item->notas }}</td>
                     <td>
-                      <a href="#" class="btn btn-warning">
+                      <a href="{{ route("proveedores.edit", $item->id) }}" class="btn btn-warning">
                         <i class="fa-solid fa-pen-to-square"></i>
                       </a>
                       <a href="#" class="btn btn-danger">
