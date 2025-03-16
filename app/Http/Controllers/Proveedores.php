@@ -51,7 +51,9 @@ class Proveedores extends Controller
      */
     public function show(string $id)
     {
-        //
+        $titulo = "Eliminar un proveedor";
+        $item = Proveedor::find($id);
+        return view("modules.proveedores.show", compact('titulo', 'item'));
     }
 
     /**
@@ -89,6 +91,12 @@ class Proveedores extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $item = Proveedor::find($id);
+            $item->delete();
+            return to_route('proveedores')->with('success', 'Proveedor Eliminado con exito!');
+        } catch (\Throwable $th) {
+            return to_route('proveedores')->with('error', 'Fallo al eliminar!!', $th->getMessage());
+        }
     }
 }

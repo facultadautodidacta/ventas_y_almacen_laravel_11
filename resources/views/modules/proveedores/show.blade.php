@@ -5,7 +5,7 @@
 @section('contenido')
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Proveedores</h1>
+    <h1>Eliminar un proveedor</h1>
     
   </div><!-- End Page Title -->
   <section class="section">
@@ -13,16 +13,13 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Administrar Proveedores</h5>
+            <h5 class="card-title">¿Estas seguro de eliminar este proveedor?</h5>
             <p>
-              Admnistrar los proveedores de nuestros productos.
+              Una vez eliminado el proveedor no podra ser recuperado!!!!.
             </p>
             <!-- Table with stripped rows -->
-            <a href="{{ route('proveedores.create') }}" class="btn btn-primary">
-              <i class="fa-solid fa-circle-plus"></i> Agregar nuevo proveedor
-            </a>
-            <hr>
-            <table class="table datatable">
+           
+            <table class="table">
               <thead>
                 <tr>
                   <th class="text-center">Nombre</th>
@@ -31,13 +28,10 @@
                   <th class="text-center">CP</th>
                   <th class="text-center">Sitio web</th>
                   <th class="text-center">Nota</th>
-                  <th class="text-center">
-                    Acciones
-                  </th>
+                  
                 </tr>
               </thead>
               <tbody>
-                  @foreach ($items as $item)
                   <tr class="text-center">
                     <td>{{ $item->nombre }}</td>
                     <td>{{ $item->telefono }}</td>
@@ -45,19 +39,19 @@
                     <td>{{ $item->cp }}</td>
                     <td>{{ $item->sitio_web }}</td>
                     <td>{{ $item->notas }}</td>
-                    <td>
-                      <a href="{{ route("proveedores.edit", $item->id) }}" class="btn btn-warning">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                      </a>
-                      <a href="{{ route("proveedores.show", $item->id) }}" class="btn btn-danger">
-                        <i class="fa-solid fa-trash-can"></i>
-                      </a>
-                    </td>
                   </tr>
-                  @endforeach
               </tbody>
             </table>
-            <!-- End Table with stripped rows -->
+            <br>
+            <form action="{{ route("proveedores.destroy", $item->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger mt-3">Eliminar proveedor</button>
+                <a href="{{ route("proveedores") }}" class="btn btn-info mt-3">
+                    Cancelar
+                </a>
+            </form>
+            
           </div>
         </div>
       </div>

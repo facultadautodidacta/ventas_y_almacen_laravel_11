@@ -51,6 +51,8 @@ Route::prefix('proveedores')->middleware('auth')->group(function(){
     Route::post('/store', [Proveedores::class, 'store'])->name('proveedores.store');
     Route::get('/edit/{id}', [Proveedores::class, 'edit'])->name('proveedores.edit');
     Route::put('/update/{id}', [Proveedores::class, 'update'])->name('proveedores.update');
+    Route::get('/show/{id}', [Proveedores::class, 'show'])->name('proveedores.show');
+    Route::delete('/destroy/{id}', [Proveedores::class, 'destroy'])->name('proveedores.destroy');
 });
 
 Route::prefix('usuarios')->middleware('auth')->group(function(){
