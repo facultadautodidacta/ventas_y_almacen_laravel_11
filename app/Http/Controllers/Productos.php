@@ -11,7 +11,8 @@ class Productos extends Controller
      */
     public function index()
     {
-        return view('modules.productos.index');
+        $titulo = "Productos";
+        return view('modules.productos.index', compact('titulo'));
     }
 
     /**
