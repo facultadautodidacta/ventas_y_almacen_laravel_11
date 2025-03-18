@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Producto;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Productos extends Controller
 {
@@ -20,7 +24,10 @@ class Productos extends Controller
      */
     public function create()
     {
-        //
+        $titulo = "Crear producto";
+        $categorias = Categoria::all();
+        $proveedores = Proveedor::all();
+        return view('modules.productos.create', compact('titulo', 'categorias', 'proveedores'));
     }
 
     /**
@@ -28,7 +35,18 @@ class Productos extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $item = new Producto();
+            $item->user_id = Auth::user()->id;
+            $item->categoria_id = $request->categoria_id;
+            $item->proveedor_id = $request->proveedor_id;
+            $item->nombre = $request->nombre;
+            $item->descripcion = $request->descripcion;
+            $item->save();
+            return to_route('productos')->with('success', 'Producto creado exitosamente!!');
+        } catch (\Throwable $th) {
+            return to_route('productos')->with('error', 'Fallo al crear producto!' . $th->getMessage());
+        }
     }
 
     /**

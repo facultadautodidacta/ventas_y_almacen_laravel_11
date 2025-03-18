@@ -22,7 +22,7 @@
             </p>
             <hr>
             <!-- Table with stripped rows -->
-            <a href="#" class="btn btn-primary">
+            <a href="{{ route('productos.create') }}" class="btn btn-primary">
               <i class="fa-solid fa-circle-plus"></i> Crear producto
             </a>
             <hr>
