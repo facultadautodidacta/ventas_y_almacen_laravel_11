@@ -45,6 +45,8 @@ Route::prefix('productos')->middleware('auth')->group(function(){
     Route::get('/', [Productos::class, 'index'])->name('productos');
     Route::get('/create', [Productos::class, 'create'])->name('productos.create');
     Route::post('/store', [Productos::class, 'store'])->name('productos.store');
+    Route::get('/edit/{id}', [Productos::class, 'edit'])->name('productos.edit');
+    Route::put('/update/{id}', [Productos::class, 'update'])->name('productos.update');
 });
 
 Route::prefix('proveedores')->middleware('auth')->group(function(){
