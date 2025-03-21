@@ -63,7 +63,17 @@ class Productos extends Controller
      */
     public function show(string $id)
     {
-        //
+        $titulo = 'Eliminar producto';
+        $items = Producto::select(
+            'productos.*',
+            'categorias.nombre as nombre_categoria',
+            'proveedores.nombre as nombre_proveedor'
+        )
+        ->join('categorias', 'productos.categoria_id', '=' , 'categorias.id')
+        ->join('proveedores', 'productos.proveedor_id', '=' , 'proveedores.id')
+        ->where('productos.id', $id)
+        ->first();
+        return view('modules.productos.show', compact('titulo', 'items'));
     }
 
     /**
@@ -102,6 +112,12 @@ class Productos extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $item = Producto::find($id);
+            $item->delete();
+            return to_route('productos')->with('success', 'Producto eliminado exitosamente!!');
+        } catch (\Throwable $th) {
+            return to_route('productos')->with('error', 'Fallo al eliminar producto!' . $th->getMessage());
+        }
     }
 }

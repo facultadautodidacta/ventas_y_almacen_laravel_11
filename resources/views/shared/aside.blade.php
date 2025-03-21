@@ -40,11 +40,30 @@
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route("productos") }}">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Productos</span>
+        <a class="nav-link collapsed" data-bs-target="#productos-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Productos</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      </li><!-- End Login Page Nav -->
+        <ul id="productos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route("productos") }}">
+              <i class="bi bi-circle"></i><span>Administrar productos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Reportes de productos</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="bi bi-dash-circle"></i>
+          <span>Compras</span>
+        </a>
+      </li><!-- End Error 404 Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route("proveedores") }}">
