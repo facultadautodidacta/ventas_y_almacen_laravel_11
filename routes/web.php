@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DetalleVentas;
 use App\Http\Controllers\Productos;
 use App\Http\Controllers\Proveedores;
+use App\Http\Controllers\Reportes_productos;
 use App\Http\Controllers\Usuarios;
 use App\Http\Controllers\Ventas;
 use Illuminate\Support\Facades\Route;
@@ -49,7 +50,13 @@ Route::prefix('productos')->middleware('auth')->group(function(){
     Route::put('/update/{id}', [Productos::class, 'update'])->name('productos.update');
     Route::get('/show/{id}', [Productos::class, 'show'])->name('productos.show');
     Route::delete('/destroy/{id}', [Productos::class, 'destroy'])->name('productos.destroy');
+    Route::get('/cambiar-estado/{id}/{estado}', [Productos::class, 'estado'])->name('productos.estado');
 });
+
+Route::prefix('reportes_productos')->middleware('auth')->group(function(){
+    Route::get('/', [Reportes_productos::class, 'index'])->name('reportes_productos');
+});
+
 
 Route::prefix('proveedores')->middleware('auth')->group(function(){
     Route::get('/', [Proveedores::class, 'index'])->name('proveedores');

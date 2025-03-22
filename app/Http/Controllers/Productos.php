@@ -120,4 +120,10 @@ class Productos extends Controller
             return to_route('productos')->with('error', 'Fallo al eliminar producto!' . $th->getMessage());
         }
     }
+
+    public function estado($id, $estado) {
+        $item = Producto::find($id);
+        $item->activo = $estado;
+        return $item->save();
+    }
 }

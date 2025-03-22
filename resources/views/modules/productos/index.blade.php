@@ -84,3 +84,41 @@
 </main>
 @endsection
 
+@push('scripts')
+  <script>
+
+      function cambiar_estado(id, estado) { 
+        $.ajax({
+          type: "GET",
+          url : "productos/cambiar-estado/" + id + "/" + estado,
+          success: function(respuesta){
+            if(respuesta == 1){
+              Swal.fire({
+                title: 'Exito!',
+                text: 'Cambio de estado exitoso!',
+                icon: 'success',
+                confirmButtonText:'Aceptar'
+              });
+              
+            } else {
+              Swal.fire({
+                title: 'Fallo!',
+                text: 'No se llevo a cabo el cambio!',
+                icon: 'error',
+                confirmButtonText:'Aceptar'
+              });
+            }
+          }
+        });
+      }
+
+    $(document).ready(function(){
+      $('.form-check-input').on("change", function(){
+        let id = $(this).attr("id");
+        let estado = $(this).is(":checked") ? 1 : 0;
+        cambiar_estado(id, estado);
+      });
+    });
+  </script>
+@endpush
+
