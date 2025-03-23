@@ -51,8 +51,8 @@
                     <td></td>
                     <td>{{ $item->descripcion }}</td>
                     <td>{{ $item->cantidad }}</td>
-                    <td>{{ $item->precio_compra }}</td>
                     <td>{{ $item->precio_venta }}</td>
+                    <td>{{ $item->precio_compra }}</td>
                     <td>
                       <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="{{ $item->id }}" 
@@ -60,7 +60,7 @@
                     </div>
                     </td>
                     <td>
-                      <a href="#" class="btn btn-info">Comprar</a>
+                      <a href="{{ route('compras.create', $item->id) }}" class="btn btn-info">Comprar</a>
                     </td>
                     <td>
                       <a href="{{ route('productos.edit', $item->id) }}" class="btn btn-warning">
