@@ -14,7 +14,16 @@ class Compras extends Controller
      */
     public function index()
     {
-        //
+        $titulo = 'compras';
+        $items = Compra::select(
+            'compras.*',
+            'users.name as nombre_usuario',
+            'productos.nombre as nombre_producto'
+        )
+        ->join('users', 'compras.user_id', '=', 'users.id')
+        ->join('productos', 'compras.producto_id', '=' , 'productos.id')
+        ->get();
+        return view('modules.compras.index', compact('titulo', 'items'));
     }
 
     /**

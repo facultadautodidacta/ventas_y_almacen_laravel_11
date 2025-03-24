@@ -59,7 +59,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ route('compras') }}">
           <i class="bi bi-dash-circle"></i>
           <span>Compras</span>
         </a>
