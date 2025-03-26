@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Imagen;
 use App\Models\Producto;
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
@@ -52,12 +53,30 @@ class Productos extends Controller
             $item->nombre = $request->nombre;
             $item->descripcion = $request->descripcion;
             $item->save();
-            return to_route('productos')->with('success', 'Producto creado exitosamente!!');
+            $id_producto = $item->id;
+
+            if($id_producto > 0) {
+                if($this->subir_imagen($request, $id_producto)){
+                    return to_route('productos')->with('success', 'Producto creado exitosamente!!');
+                } else {
+                    return to_route('productos')->with('error', 'No se subio la imagen!!');
+                }
+            }
         } catch (\Throwable $th) {
             return to_route('productos')->with('error', 'Fallo al crear producto!' . $th->getMessage());
         }
     }
 
+    public function subir_imagen($request, $id_producto) {
+        $rutaImagen = $request->file('imagen')->store('imagenes', 'public');
+        $nombreImagen = basename($rutaImagen);
+
+        $item = new Imagen();
+        $item->producto_id = $id_producto;
+        $item->nombre = $nombreImagen;
+        $item->ruta = $rutaImagen;
+        return $item->save();
+    }
     /**
      * Display the specified resource.
      */
