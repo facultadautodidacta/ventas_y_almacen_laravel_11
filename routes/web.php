@@ -49,6 +49,10 @@ Route::prefix('productos')->middleware('auth')->group(function(){
     Route::post('/store', [Productos::class, 'store'])->name('productos.store');
     Route::get('/edit/{id}', [Productos::class, 'edit'])->name('productos.edit');
     Route::put('/update/{id}', [Productos::class, 'update'])->name('productos.update');
+    
+    Route::get('/show-image/{id}', [Productos::class, 'show_image'])->name('productos.show.image');
+    Route::put('/update-image/{id}', [Productos::class, 'update_image'])->name('productos.update.image');
+    
     Route::get('/show/{id}', [Productos::class, 'show'])->name('productos.show');
     Route::delete('/destroy/{id}', [Productos::class, 'destroy'])->name('productos.destroy');
     Route::get('/cambiar-estado/{id}/{estado}', [Productos::class, 'estado'])->name('productos.estado');
