@@ -278,38 +278,7 @@
       }, false)
     })
 
-  /**
-   * Initiate Datatables
-   */
-  const datatables = select('.datatable', true)
-  datatables.forEach(datatable => {
-    new simpleDatatables.DataTable(datatable, {
-      perPageSelect: [5, 10, 15, ["All", -1]],
-      labels: {
-        placeholder: "Buscar...", // Texto en el cuadro de búsqueda
-        perPage: "Mostrar registros por página",
-        noRows: "No hay registros para mostrar",
-        info: "Mostrando {start} a {end} de {rows} registros",
-        noResults: "No se encontraron coincidencias",
-        next: "Siguiente",
-        prev: "Anterior"
-      },
-      columns: [{
-          select: 2,
-          sortSequence: ["desc", "asc"]
-        },
-        {
-          select: 3,
-          sortSequence: ["desc"]
-        },
-        {
-          select: 4,
-          cellClass: "green",
-          headerClass: "red"
-        }
-      ]
-    });
-  })
+  
 
   /**
    * Autoresize echart charts
