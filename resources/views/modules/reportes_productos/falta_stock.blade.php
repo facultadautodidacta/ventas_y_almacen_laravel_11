@@ -5,7 +5,7 @@
 @section('contenido')
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Reportes de productos</h1>
+    <h1>Reportes de productos con cantida 1 o 0</h1>
     
   </div><!-- End Page Title -->
   <section class="section">
@@ -13,17 +13,8 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Administrar Reportes De Productos</h5>
-            <p>
-              Tipos de reportes del sistema para productos
-            </p>
-            <div class="row">
-              <div class="col text-end">
-                <a href="{{ route('reportes_productos.falta_stock') }}" class="btn btn-primary btn-sm">
-                  Productos con cantidad 1 o 0
-                </a>
-              </div>
-            </div>
+            <h5 class="card-title">Reportes de productos con cantida 1 o 0</h5>
+            
            <hr>
             <!-- Table with stripped rows -->
             

@@ -60,6 +60,7 @@ Route::prefix('productos')->middleware('auth')->group(function(){
 
 Route::prefix('reportes_productos')->middleware('auth')->group(function(){
     Route::get('/', [Reportes_productos::class, 'index'])->name('reportes_productos');
+    Route::get('/falta-stock', [Reportes_productos::class, 'falta_stock'])->name('reportes_productos.falta_stock');
 });
 
 

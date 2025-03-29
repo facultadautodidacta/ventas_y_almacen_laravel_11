@@ -27,7 +27,7 @@ class Productos extends Controller
         )
         ->join('categorias', 'productos.categoria_id', '=' , 'categorias.id')
         ->join('proveedores', 'productos.proveedor_id', '=' , 'proveedores.id')
-        ->join('imagenes', 'productos.id', '=', 'imagenes.producto_id')
+        ->leftJoin('imagenes', 'productos.id', '=', 'imagenes.producto_id')
         ->get();
 
         return view('modules.productos.index', compact('titulo', 'items'));
