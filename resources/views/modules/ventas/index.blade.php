@@ -59,21 +59,39 @@
                     <th class="text-center">Nombre</th>
                     <th class="text-center">Cantida</th>
                     <th class="text-center">Precio</th>
+                    <th class="text-center">Quitar</th>
                   </thead>
                   <tbody>
+                    @php
+                        $totalGeneral = 0;
+                    @endphp
+
                     @foreach (session('items_carrito') as $item)
+                    @php
+                        $totalProducto = $item['cantidad'] * $item['precio'];
+                        $totalGeneral += $totalProducto;
+                    @endphp
                     <tr>
                       <td class="text-center">{{ $item['codigo'] }}</td>
                       <td class="text-center">{{ $item['nombre'] }}</td>
                       <td class="text-center">{{ $item['cantidad'] }}</td>
                       <td class="text-center">${{ $item['precio'] }}</td>
-                      
+                      <td class="text-center">
+                        <a href="{{ route('ventas.quitar.carrito', $item['id']) }}" class="btn btn-danger">Quitar</a>
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>
+                  <tfoot>
+                    <tr>
+                      <td class="text-center">Total General</td>
+                      <td class="text-center"><strong>${{ $totalGeneral }}</strong></td>
+                      <td></td>
+                    </tr>
+                  </tfoot>
                 </table>
                 <hr>
-                <a href="#" class="btn btn-primary">Realizar compra</a>
+                <a href="#" class="btn btn-primary">Realizar Venta</a>
                 <a href="{{ route('ventas.borrar.carrito') }}" class="btn btn-danger">Borrar carrito</a>
             @else
                 <p>No tengo contenido</p>
@@ -92,7 +110,27 @@
     <script>
       $(document).ready(function(){
         $('#productos_carrito').DataTable({
-          "pageLength" : 2
+          "pageLength" : 2,
+          language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+          }
         });
       })
     </script>

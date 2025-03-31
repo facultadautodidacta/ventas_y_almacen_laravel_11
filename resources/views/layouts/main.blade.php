@@ -116,7 +116,7 @@
               "next": "Siguiente",
               "previous": "Anterior"
           }
-      }
+        }
         
     });
 
