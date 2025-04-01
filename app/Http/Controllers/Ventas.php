@@ -105,6 +105,7 @@ class Ventas extends Controller
                 $detalle->producto_id = $item['id'];
                 $detalle->cantidad = $item['cantidad'];
                 $detalle->precio_unitario = $item['precio'];
+                $detalle->sub_total = $item['cantidad'] * $item['precio'];
                 $detalle->save();
 
                 $producto->cantidad -= $item['cantidad'];
