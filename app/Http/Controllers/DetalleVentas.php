@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Detalle_venta;
 use App\Models\Producto;
 use App\Models\Venta;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -73,5 +74,28 @@ class DetalleVentas extends Controller
             DB::rollBack();
             return to_route('detalle-venta')->with('error', 'RNo se pudo revocar la venta!!');
         }
+    }
+
+    public function generarTicket($id){
+        $venta = Venta::select(
+            'ventas.*',
+            'users.name as nombre_usuario'
+        )
+        ->join('users', 'ventas.user_id', '=', 'users.id')
+        ->where('ventas.id', $id)
+        ->firstOrFail();
+
+        $detalles = Detalle_venta::select(
+            'detalle_venta.*',
+            'productos.nombre as nombre_producto'
+        )
+        ->join('productos', 'detalle_venta.producto_id', '=', 'productos.id')
+        ->where('venta_id', $id)
+        ->get();
+
+        //genrara el pdf
+        $pdf = Pdf::loadView("modules.detalles_ventas.ticket", compact('venta','detalles'));
+        //descargar el pdf
+        return $pdf->stream("ticket_compra_{$venta->id}.pdf");
     }
 }
