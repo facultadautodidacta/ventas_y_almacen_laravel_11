@@ -36,6 +36,7 @@ Route::prefix('ventas')->group(function(){
 Route::prefix('detalle')->middleware('auth')->group(function(){
     Route::get('/detalle-venta', [DetalleVentas::class, 'index'])->name('detalle-venta');
     Route::get('/vista-detalle/{id_venta}', [DetalleVentas::class, 'vista_detalle'])->name('detalle.vista.detalle');
+    Route::delete('/revocar/{id_venta}', [DetalleVentas::class, 'revocar'])->name('detalle.revocar');
 });
 
 Route::prefix('categorias')->middleware('auth')->group(function(){
