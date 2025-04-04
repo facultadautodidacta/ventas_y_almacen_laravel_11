@@ -12,18 +12,17 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="#" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">Ventas y Almacén</span>
+                  
                 </a>
               </div><!-- End Logo -->
 
               <div class="card mb-3">
 
                 <div class="card-body">
-
+                  <img src="{{ asset('img/login.jpg') }}" alt="" class="img-fluid">
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Login de usuarios</h5>
-                    <p class="text-center small">Ingresa tu email y password para acceder</p>
+                    <h5 class="card-title text-center pb-0 fs-4">Ingresa tu email y password para acceder</h5>
+                    
                   </div>
                   <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('logear') }}">
                     @csrf
@@ -63,7 +62,7 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a target="_blank" href="https://facultadautodidacta/">Facultad Autodidacta</a>
+                Desarrollo por <a target="_blank" href="https://facultadautodidacta/">Facultad Autodidacta</a>
               </div>
 
             </div>
