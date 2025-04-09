@@ -76,26 +76,29 @@ class DetalleVentas extends Controller
         }
     }
 
-    public function generarTicket($id){
-        $venta = Venta::select(
-            'ventas.*',
-            'users.name as nombre_usuario'
-        )
-        ->join('users', 'ventas.user_id', '=', 'users.id')
-        ->where('ventas.id', $id)
-        ->firstOrFail();
+    public function generarTicket($id)
+{
+    $venta = Venta::select(
+        'ventas.*',
+        'users.name as nombre_usuario'
+    )
+    ->join('users', 'ventas.user_id', '=', 'users.id')
+    ->where('ventas.id', $id)
+    ->firstOrFail();
 
-        $detalles = Detalle_venta::select(
-            'detalle_venta.*',
-            'productos.nombre as nombre_producto'
-        )
-        ->join('productos', 'detalle_venta.producto_id', '=', 'productos.id')
-        ->where('venta_id', $id)
-        ->get();
+    $detalles = Detalle_venta::select(
+        'detalle_venta.*',
+        'productos.nombre as nombre_producto'
+    )
+    ->join('productos', 'detalle_venta.producto_id', '=', 'productos.id')
+    ->where('venta_id', $id)
+    ->get();
 
-        //genrara el pdf
-        $pdf = Pdf::loadView("modules.detalles_ventas.ticket", compact('venta','detalles'));
-        //descargar el pdf
-        return $pdf->stream("ticket_compra_{$venta->id}.pdf");
-    }
+    // Generar PDF con tamaño personalizado tipo ticket (80mm x altura ajustable)
+    $pdf = Pdf::loadView('modules.detalles_ventas.ticket', compact('venta', 'detalles'))
+              ->setPaper([0, 0, 226.77, 600], 'portrait'); // 80mm de ancho
+
+    return $pdf->stream("ticket_compra_{$venta->id}.pdf");
+}
+
 }
