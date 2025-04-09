@@ -5,15 +5,15 @@
     <title>Ticket de compra</title>
     <style>
         body {
-            font-family: monospace;
-            font-size: 12px;
+            font-family: Arial;
+            font-size: 10px;
             margin: 0;
             padding: 0;
         }
 
         .ticket {
-            width: 75mm;
-            padding: 10px;
+            width: 270px;
+            padding: auto;
         }
 
         .titulo {
@@ -34,7 +34,7 @@
         }
 
         th, td {
-            padding: 4px 0;
+            padding: 2px 0;
             border-bottom: 1px dashed #000;
             text-align: left;
         }

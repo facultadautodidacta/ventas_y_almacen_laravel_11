@@ -96,7 +96,7 @@ class DetalleVentas extends Controller
 
     // Generar PDF con tamaño personalizado tipo ticket (80mm x altura ajustable)
     $pdf = Pdf::loadView('modules.detalles_ventas.ticket', compact('venta', 'detalles'))
-              ->setPaper([0, 0, 226.77, 600], 'portrait'); // 80mm de ancho
+              ->setPaper([0, 0, 300, 900], 'portrait'); // 80mm de ancho
 
     return $pdf->stream("ticket_compra_{$venta->id}.pdf");
 }
