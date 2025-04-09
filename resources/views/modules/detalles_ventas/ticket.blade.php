@@ -1,76 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ticket de compra</title>
+    <title>Ticket de compra</title>
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif
+            font-family: monospace;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
         }
-        .ticket{
-            width: 300px;
-            margin: auto;
+
+        .ticket {
+            width: 75mm;
             padding: 10px;
-            border: 1px solid #000;
         }
+
         .titulo {
-            font-size: 18px; font-weight: bold;
-        }
-        .detalle {
-            text-align: left; margin-top: 10px;
-        }
-        .total {
-            font-size: 16px; 
+            text-align: center;
+            font-size: 14px;
             font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .detalle {
             margin-top: 10px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            font-size: 12px;
         }
 
         th, td {
-            border-bottom : 1px solid #000;
-            padding: 5px;
+            padding: 4px 0;
+            border-bottom: 1px dashed #000;
             text-align: left;
         }
 
+        .total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .gracias {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
     <div class="ticket">
-        <p class="titulo">ticket de compra en facultad autodidacta</p>
-        <p><strong>Cajero: </strong> {{ $venta->nombre_usuario }} </p>
-        <p><strong>Fecha</strong>{{ $venta->created_at }}</p>
+        <div class="titulo">Ticket de compra - Facultad Autodidacta</div>
+
+        <p><strong>Cajero:</strong> {{ $venta->nombre_usuario }}</p>
+        <p><strong>Fecha:</strong> {{ $venta->created_at }}</p>
 
         <div class="detalle">
-            <table border="1">
+            <table>
                 <thead>
                     <tr>
                         <th>Producto</th>
                         <th>Cant.</th>
                         <th>Precio</th>
-                        <th>Subtotal</th>
+                        <th>Subt.</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($detalles as $item)
-                  <tr class="text-center">
-                    <td class="text-center">{{ $item->nombre_producto }}</td>
-                    <td class="text-center">{{ $item->cantidad }}</td>
-                    <td class="text-center">${{ $item->precio_unitario }}</td>
-                    <td class="text-center">${{ $item->sub_total }}</td>
-                   
-                  </tr>
-                  @endforeach
+                        <tr>
+                            <td>{{ $item->nombre_producto }}</td>
+                            <td>{{ $item->cantidad }}</td>
+                            <td>${{ number_format($item->precio_unitario, 2) }}</td>
+                            <td>${{ number_format($item->sub_total, 2) }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
-        <p class="total"><strong>Total de venta</strong> ${{ $venta->total_venta }}</p>
-        <p>Gracias por comprar!</p>
+
+        <p class="total">Total: ${{ number_format($venta->total_venta, 2) }}</p>
+
+        <p class="gracias">¡Gracias por su compra!</p>
     </div>
 </body>
 </html>
